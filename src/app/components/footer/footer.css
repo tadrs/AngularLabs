@@ -1,0 +1,61 @@
+/* Footer Base */
+.footer-section {
+  background-color: #0b0d0f !important;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Link Hover Animations */
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #0d6efd;
+  transform: translateX(5px);
+}
+
+/* Social Icons */
+.social-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  background: #0d6efd;
+  transform: translateY(-3px);
+  color: white;
+}
+
+/* Newsletter Glass Input */
+.bg-glass {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.bg-glass:focus {
+  background: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none;
+  border-color: #0d6efd !important;
+}
+
+.newsletter-form .btn {
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+}

@@ -1,0 +1,13 @@
+<div class="card h-100 shadow-sm border-0">
+  <img [src]="studentData.photoUrl" class="card-img-top p-3 rounded-circle mx-auto d-block" 
+       [alt]="studentData.name" style="width: 140px; height: 140px; object-fit: cover;">
+       
+  <div class="card-body text-center">
+    <h5 class="card-title fw-bold text-dark">{{ studentData.name }}</h5>
+    <p class="card-text text-secondary mb-3">Age: {{ studentData.age }}</p>
+    
+    <button class="btn btn-primary btn-sm rounded-pill px-4 shadow-sm">
+      View Profile
+    </button>
+  </div>
+</div>
