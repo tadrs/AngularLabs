@@ -1,0 +1,63 @@
+<div class="container my-5 pt-5">
+  <div class="row mb-5 justify-content-center">
+    <div class="col-md-6 col-lg-4 text-center">
+      <label class="form-label fw-bold text-secondary mb-3">
+        Explore Our Categories
+      </label>
+      <select class="form-select shadow-sm rounded-pill px-4 border-0 bg-light" [(ngModel)]="selectedCatId">
+        <option [value]="0">All Courses</option>
+        @for (cat of categories; track cat.id) {
+          <option [value]="cat.id"> {{ cat.name }} </option>
+        }
+      </select>
+    </div>
+  </div>
+  <div class="row g-4">
+    @for (course of courses; track course.id) {
+      @if (selectedCatId === 0 || course.catId === selectedCatId) {
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm transition-hover" [ngClass]="{'text-danger border border-danger': course.seats === 0}">
+            <div class="position-relative">
+              <img [src]="course.image" [alt]="course.title" class="card-img-top" style="height: 220px; object-fit: cover;"/>
+              <div class="position-absolute top-0 end-0 m-3">
+                @if (course.seats === 0) {
+                  <span class="badge bg-danger px-3 py-2 rounded-pill shadow">Course Full</span>
+                }
+                @else if (course.seats <= 2) {
+                  <span class="badge bg-warning text-dark px-3 py-2 rounded-pill shadow">Almost Full</span>
+                }
+
+              </div>
+            </div>
+
+            <div class="card-body p-4" [ngStyle]="{'background-color': (course.seats > 0 && course.seats <= 2)? '#fffdf2' : '#ffffff'}">
+
+              <div class="mb-2">
+                <h5 class="card-title fw-bold mb-1"> {{ course.title }} </h5>
+
+                <p class="text-muted small mb-2">By {{ course.instructor }}</p>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="text-muted text-decoration-line-through">${{ course.price }}</span>
+
+                  <span class="text-primary fw-bold">Now: {{ course.price | discount:50 }}</span>
+                </div>
+              </div>
+
+              <div class="d-flex align-items-center mb-4 text-secondary small">
+                <i class="bi bi-people me-2"></i>
+                <span>{{ course.seats }} Seats Available</span>
+              </div>
+
+              <button class="btn btn-primary w-100 rounded-pill py-2 fw-bold shadow-sm" appDisableAfterClick (click)="register(course)" [disabled]="course.seats === 0">
+                Register Now
+              </button>
+
+            </div>
+          </div>
+
+        </div>
+      }
+    }
+
+  </div>
+</div>
