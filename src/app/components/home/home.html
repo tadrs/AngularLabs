@@ -1,0 +1,20 @@
+<div class="container my-5 pt-5">
+ 
+    <h2 class="text-center label">totalPrice: {{totalprice}}</h2>
+    <div class="row mb-5 justify-content-center">
+    <div class="col-md-6 col-lg-4 text-center">
+      <label class="form-label fw-bold text-secondary mb-3">
+        Explore Our Categories
+      </label>
+      <select class="form-select shadow-sm rounded-pill px-4 border-0 bg-light" [(ngModel)]="selectedCatId">
+        <option [value]="0">All Courses</option>
+        @for (cat of categories; track cat.id) {
+          <option [value]="cat.id"> {{ cat.name }} </option>
+        }
+      </select>
+    </div>
+  </div>
+</div>
+
+
+<app-courses [setCategoryId]="selectedCatId" (onTotalPriceChange)="setTotalPrice($event)"></app-courses>
