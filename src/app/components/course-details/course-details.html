@@ -1,0 +1,50 @@
+<div class="container my-5">
+  <div *ngIf="course; else loading" class="card shadow-lg border-0 overflow-hidden">
+    <div class="row g-0">
+      
+      <div class="col-md-5">
+        <img [src]="course.image" 
+             [alt]="course.title" 
+             class="img-fluid h-100 w-100" 
+             style="object-fit: cover; min-height: 300px;">
+      </div>
+
+      <div class="col-md-7">
+        <div class="card-body p-4 p-lg-5">
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <h1 class="h2 fw-bold text-primary mb-0">{{ course.title }}</h1>
+            <span class="badge bg-success fs-6">{{ course.price }}</span>
+          </div>
+
+
+          <hr class="my-4">
+
+          <div class="row g-4">
+            <div class="col-6 col-sm-4">
+              <div class="d-flex flex-column">
+                <span class="text-secondary small fw-bold">المدرب</span>
+                <span class="fw-semibold text-dark">{{ course.instructor }}</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mt-5 d-grid gap-2 d-md-flex">
+            <button class="btn btn-primary btn-lg px-5 shadow-sm">register</button>
+            <button class="btn btn-outline-secondary btn-lg px-4" routerLink="/courses">back</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <div class="d-flex flex-column align-items-center justify-content-center py-5">
+      <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="text-muted">loading the course details...</p>
+    </div>
+  </ng-template>
+</div>

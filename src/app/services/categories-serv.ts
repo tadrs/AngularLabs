@@ -1,19 +1,25 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Category } from '../models/category';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoriesServ {
-  private categories:Category[] = [
-    { id: 1, name: "Programming" },
-    { id: 2, name: "Design" },
-    { id: 3, name: "Business" },
-    { id: 4, name: "Marketing" }
-  ];
 
-  getallCategories(): Category[] {
-    return this.categories;
-  } 
+  private baseUrl = environment.apiUrl; 
+
+  constructor(private http: HttpClient) { }
+
+  getAllCategories() {
+    return this.http.get<Category[]>(`${this.baseUrl}/categories`,{
+      headers: {
+        token: 'eyJhbGciOi'
+      }
+    });
+  }
+
+  
 
 }

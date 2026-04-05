@@ -1,5 +1,5 @@
 <div class="row justify-content-center g-4">
-  @for (course of filteredCourses; track course.id) {
+  @for (course of filteredCourses(); track course.id) {
 
     <div class="col-auto">
       <div class="card course-card h-100 border-0 shadow-sm transition-hover"
@@ -25,9 +25,9 @@
             <p class="text-muted small mb-2">By {{ course.instructor }}</p>
 
             <div class="d-flex align-items-center gap-2">
-              <span class="text-muted text-danger text-decoration-line-through">50%</span>
+              <span class="text-danger text-decoration-line-through">50%</span>
               <span class="text-primary fw-bold">
-                ${{ course | discount:50 }}
+                ${{ course.price }}
               </span>
             </div>
           </div>
@@ -43,6 +43,11 @@
                   [disabled]="course.seats === 0">
             {{ course.seats === 0 ? 'Full' : 'Register Now' }}
           </button>
+
+          <button class="btn btn-link w-100 mt-2"
+                  [routerLink]="['/courses', course.id]">
+            View Details
+          </button> 
 
         </div>
 
